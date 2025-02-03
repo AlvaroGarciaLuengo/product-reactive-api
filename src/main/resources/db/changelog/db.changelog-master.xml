@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.8.xsd">
+
+    <!-- ChangeSet para crear la tabla currencies -->
+    <changeSet id="1" author="tu_nombre">
+        <createTable tableName="currencies">
+            <column name="id" type="VARCHAR">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="symbol" type="VARCHAR">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet para crear la tabla products -->
+    <changeSet id="2" author="tu_nombre">
+        <createTable tableName="products">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP" defaultValueComputed="NOW()"/>
+            <column name="description" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_id" type="VARCHAR">
+                <constraints foreignKeyName="fk_products_currency" references="currencies(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ChangeSet para insertar datos en currencies -->
+    <changeSet id="3" author="tu_nombre">
+        <insert tableName="currencies">
+            <column name="id" value="EUR"/>
+            <column name="symbol" value="€"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="USD"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="GBP"/>
+            <column name="symbol" value="£"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="JPY"/>
+            <column name="symbol" value="¥"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="AUD"/>
+            <column name="symbol" value="A$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="CAD"/>
+            <column name="symbol" value="C$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="CHF"/>
+            <column name="symbol" value="CHF"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="CNY"/>
+            <column name="symbol" value="¥"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="INR"/>
+            <column name="symbol" value="₹"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="BRL"/>
+            <column name="symbol" value="R$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="MXN"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="SEK"/>
+            <column name="symbol" value="kr"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="NOK"/>
+            <column name="symbol" value="kr"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="DKK"/>
+            <column name="symbol" value="kr"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="SGD"/>
+            <column name="symbol" value="S$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="HKD"/>
+            <column name="symbol" value="HK$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="ZAR"/>
+            <column name="symbol" value="R"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="KRW"/>
+            <column name="symbol" value="₩"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="TRY"/>
+            <column name="symbol" value="₺"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="RUB"/>
+            <column name="symbol" value="₽"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="NZD"/>
+            <column name="symbol" value="NZ$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="PLN"/>
+            <column name="symbol" value="zł"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="MYR"/>
+            <column name="symbol" value="RM"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="THB"/>
+            <column name="symbol" value="฿"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="IDR"/>
+            <column name="symbol" value="Rp"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="PHP"/>
+            <column name="symbol" value="₱"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="VND"/>
+            <column name="symbol" value="₫"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="COP"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="ARS"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="EGP"/>
+            <column name="symbol" value="£"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="ILS"/>
+            <column name="symbol" value="₪"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="CLP"/>
+            <column name="symbol" value="$"/>
+        </insert>
+        <insert tableName="currencies">
+            <column name="id" value="BDT"/>
+            <column name="symbol" value="৳"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

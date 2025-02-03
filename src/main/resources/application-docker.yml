@@ -1,0 +1,10 @@
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/products_database
+    username: user
+    password: password
+
+redis:
+  host: redis
+  port: 6379
+  timeout: 6000ms

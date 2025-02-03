@@ -1,0 +1,73 @@
+version: '3.8'
+services:
+  liquibase:
+    image: maven:3-amazoncorretto-21
+    container_name: liquibase
+    working_dir: /app
+    command: mvn liquibase:update
+    volumes:
+      - .:/app
+    environment:
+      LIQUIBASE_URL: jdbc:postgresql://postgres:5432/products_database
+      LIQUIBASE_USERNAME: user
+      LIQUIBASE_PASSWORD: password
+      LIQUIBASE_DRIVER: org.postgresql.Driver
+    depends_on:
+      - postgres
+    restart: no
+    networks:
+      - product-reactive-api
+
+  app:
+    image: product-reactive-api:latest
+    container_name: product-reactive-api
+    restart: always
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_REDIS_HOST=redis
+    networks:
+      - product-reactive-api
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: products_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - product-reactive-api
+
+  redis:
+    image: redis:7.4.2
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: [ "redis-server", "--appendonly", "yes" ]
+    networks:
+      - product-reactive-api
+
+volumes:
+  postgres_data:
+  redis_data:
+    driver: local
+
+networks:
+  product-reactive-api:
+    driver: bridge
+    name: product-reactive-api
+
