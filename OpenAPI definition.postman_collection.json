@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "eb99aa7b-3f8c-43f0-b2b4-6584bd3b41c8",
+		"_postman_id": "8fb12b7c-a4d2-45c0-b2e4-d6e8e4684159",
 		"name": "OpenAPI definition",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10964535"
@@ -39,7 +39,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "<long>",
+													"value": "1",
 													"description": "(Required) "
 												}
 											]
@@ -106,7 +106,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"description\": \"<string>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+											"raw": "{\n  \"description\": \"UPDATED PRODUCT\",\n  \"price\": \"500.89\",\n  \"currency\": \"USD\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -127,7 +127,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "<long>",
+													"value": "1",
 													"description": "(Required) "
 												}
 											]
@@ -206,7 +206,7 @@
 											"variable": [
 												{
 													"key": "id",
-													"value": "<long>",
+													"value": "1",
 													"description": "(Required) "
 												}
 											]
@@ -329,7 +329,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"description\": \"<string>\",\n  \"price\": \"<number>\",\n  \"currency\": \"<string>\"\n}",
+									"raw": "{\n  \"description\": \"PRODUCT\",\n  \"price\": \"230.99\",\n  \"currency\": \"EUR\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -482,7 +482,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "<string>",
+											"value": "USD",
 											"description": "(Required) "
 										}
 									]
