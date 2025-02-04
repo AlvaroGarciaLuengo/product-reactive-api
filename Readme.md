@@ -35,51 +35,9 @@ Este comando creará la imagen Docker con el nombre product-reactive-api.
 ### 3. Configurar Docker Compose
 Asegúrate de que tienes configurado el archivo docker-compose.yml para levantar los servicios que necesita la aplicación. Aquí se definen los contenedores de la aplicación (app), PostgreSQL (postgres) y Redis (redis).
 
-Tu archivo docker-compose.yml debe verse de esta forma:
-
-```yaml
-version: '3.8'
-services:
-  app:
-    image: product-reactive-api:latest
-    container_name: product-reactive-api
-    restart: always
-    ports:
-      - "8080:8080"
-      - "5005:5005"
-    depends_on:
-      - postgres
-      - redis
-  postgres:
-    image: postgres:17
-    container_name: postgres_local
-    restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: products_database
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-  redis:
-    image: redis:7.4.2
-    container_name: redis
-    restart: always
-    ports:
-      - "6379:6379"
-    volumes:
-      - redis_data:/data
-    command: [ "redis-server", "--appendonly", "yes" ]
-
-volumes:
-  postgres_data:
-  redis_data:
-    driver: local
-```
 ### 4. Levantar los contenedores
 Una vez que la imagen Docker se ha construido, puedes levantar todos los servicios (base de datos, Redis, y la aplicación) usando Docker Compose. Ejecuta:
-
+Adicionalmente se utiliza liquibase para crear el modelo de BBDD.
 ```bash
 docker-compose up --build
 ```
